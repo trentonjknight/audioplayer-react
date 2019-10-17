@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 function AudioPlayer(){
     const [songs,setSongs] = useState([])
     const [player,setPlayer] = useState()
+    const [skip,setSkip] = useState()
 
     useEffect(() => {
             fetch('https://assets.breatheco.de/apis/sound/songs')
@@ -12,17 +13,22 @@ function AudioPlayer(){
 
 let audio = new Audio();
 
-function clickTrack(panda){
-    audio.src = 'https://assets.breatheco.de/apis/sound/' + panda.url;
+function clickTrack(track){
+    audio.src = 'https://assets.breatheco.de/apis/sound/' + track.url;
     audio.play();
 }
 function stop(){
     audio.pause();
 }
 function play(){
-    audio.src = 'https://assets.breatheco.de/apis/sound/' + url;
+    if (audio.currentSrc === '')
+        audio.src = 'https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3';
     audio.play();
 }
+function next(){
+
+}
+
 
     return (
         <>
@@ -37,8 +43,8 @@ function play(){
                 </ol>
                 <button onClick={()=> {play()}}>PLAY</button>
                 <button onClick={()=> {stop()}}>PAUSE</button>
+                <button onClick={()=> {next()}}>NEXT</button>
             </div>
-            <audio controls src="https://assets.breatheco.de/apis/sound/files/mario/songs/underworld.mp3"></audio>
         </>
     )
 }
