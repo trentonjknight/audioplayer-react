@@ -20,7 +20,7 @@ function AudioPlayer(){
 
     useEffect(() => {
         return(
-            fetch('')
+            fetch('https://assets.breatheco.de/apis/sound/songs')
             .then( resp => resp.json())
             .then( data => {setSongs(data)})
         )
@@ -29,9 +29,9 @@ function AudioPlayer(){
     return (
         <div>
             <ul>
-                {songs.map((item, index) => {
+                {songs.map((songs, index) => {
                     return(
-                        <li key={index}>you are this!</li>
+                        <li key={index}> | Track: {songs.id} | Link: {songs.url}</li>
                     )}
                 )}
             </ul>
