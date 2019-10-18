@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 
 function AudioPlayer(){
     const [songs,setSongs] = useState([])
-    const [player,setPlayer] = useState()
     const [skip,setSkip] = useState()
 
     useEffect(() => {
@@ -16,6 +15,7 @@ let audio = new Audio();
 function clickTrack(track){
     audio.src = 'https://assets.breatheco.de/apis/sound/' + track.url;
     audio.play();
+    console.log(track);
 }
 function stop(){
     audio.pause();
@@ -25,10 +25,10 @@ function play(){
         audio.src = 'https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3';
     audio.play();
 }
-function next(){
 
-}
-
+{/*function next(){
+    songs + 1
+} */}
 
     return (
         <>
@@ -43,7 +43,8 @@ function next(){
                 </ol>
                 <button onClick={()=> {play()}}>PLAY</button>
                 <button onClick={()=> {stop()}}>PAUSE</button>
-                <button onClick={()=> {next()}}>NEXT</button>
+
+
             </div>
         </>
     )
