@@ -16,7 +16,7 @@ function AudioPlayer(){
     useEffect(() => {
             fetch('https://assets.breatheco.de/apis/sound/songs')
             .then( resp => resp.json())
-            .then( data => {setSongs(data)})
+            .then( data => setSongs(data))
     }, [])
 
 
@@ -69,15 +69,9 @@ const next = () => {
             <h1>4GEEKS MUSIC</h1>
             <h3>Click on any track name below to play the song! Background credit Milan Noheji @nohoid</h3>
                 <button className="btn btn-light m-1" onClick={()=> {play()}}>►</button>
-                <button className="btn btn-light m-1">
-                <Icon
-                    size={25}
-                    icon={ic_stop}
-                    onClick={stop()}
-                /></button>
-
+                <button className="btn btn-light m-1" onClick={()=> {stop()}}>■</button>
                 <button className="btn btn-light m-1" onClick={()=> {next()}}><b>►►|</b></button>
-                <button className="btn btn-light m-1" onClick={()=> {prev()}}> |◀◀</button>
+                <button className="btn btn-light m-1" onClick={()=> {prev()}}><b>|◀◀</b></button>
                 <ol>
                     {songs.map((item, index) => {
                         return(
