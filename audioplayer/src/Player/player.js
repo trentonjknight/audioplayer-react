@@ -61,6 +61,7 @@ const next = () => {
           return;
       }
       setCurrentSong(currentSong - 1);
+      play();
   }
     return (
         <>
@@ -75,7 +76,7 @@ const next = () => {
                 <ol>
                     {songs.map((item, index) => {
                         return(
-                            <li key={index} onClick={()=>  {setCurrentSong(index)}}> <span onClick={()=>play(index)}></span> ►{item.name}</li>
+                            <li key={index} onClick={()=>  {setCurrentSong(index)}}> <button onClick={()=>play(index)}>►</button> {item.name}</li>
                         )}
                     )}
                 </ol>
