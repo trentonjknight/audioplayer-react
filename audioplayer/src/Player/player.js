@@ -26,7 +26,7 @@ function clickTrack(track){
 }
 function stop(){
     audio.pause();
-    audio.currentTime =0;
+    audio.currentTime = 0;
     // setCurrentSong = 0;
 }
 function playSingle(i){
@@ -38,33 +38,42 @@ function play(){
     let current = songs.find((item,index)=> index == currentSong)
     audio.src = 'https://assets.breatheco.de/apis/sound/' + current.url
     audio.play()
-console.log("play",current)
+    console.log("play",current)
     // if (audio.currentSrc === '')
     //     audio.src = 'https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3';
     // audio.play();
 }
 const next = () => {
-if (currentSong === songs.length - 1) {
+    if (currentSong === songs.length - 1) {
       setCurrentSong(0);
       return;
     }
     setCurrentSong(currentSong + 1);
   };
 
+const prev = () => {
+    if (currentSong === songs.length-1){
+        setCurrentSong(0);
+        return;
+    }
+    setCurrentSong(currentSong - 1);
+}
+
 
     return (
         <>
-            <div className="wrapper">
+        <div className="wrapper">
           <div className="that">
             <h1>4GEEKS MUSIC</h1>
             <h3>Click on any track name below to play the song! Background credit Milan Noheji @nohoid</h3>
                 <button className="btn btn-light m-1" onClick={()=> {play()}}>PLAY</button>
                 <button className="btn btn-light m-1"onClick={()=> {stop()}}>PAUSE</button>
                 <button className="btn btn-light m-1" onClick={()=> {next()}}>NEXT</button>
+                <button className="btn btn-light m-1" onClick={()=> {prev()}}>PREV</button>
                 <ol>
                     {songs.map((item, index) => {
                         return(
-                            <li key={index} onClick={()=>  {setCurrentSong(index)}}> <span ><i onClick={()=>playSingle(index)}className="btn btn-info fab fa-google-play"></i>x</span> {item.name}</li>
+                            <li key={index} onClick={()=>  {setCurrentSong(index)}}> <span ><i onClick={()=>playSingle(index)}className="btn btn-info fab fa-google-play"></i></span> {item.name}</li>
                         )}
                     )}
                 </ol>
